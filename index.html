@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -121,5 +121,29 @@
             });
         });
     </script>
+</body>
+</html>
+ -->
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Page - Scraping Blocked</title>
+    <script>
+        // JavaScript to detect scraping attempts
+        document.addEventListener('DOMContentLoaded', function () {
+            if (document.referrer === '') {
+                // Block content if there is no referrer (indicating a bot)
+                document.body.innerHTML = '<h1>Access Denied</h1><p>Web scraping is not allowed.</p>';
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Welcome to Our Demo Page</h1>
+    <p>This content is protected against web scraping.</p>
 </body>
 </html>

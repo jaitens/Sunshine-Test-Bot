@@ -126,6 +126,8 @@
  -->
 
 
+
+
  <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -143,7 +145,27 @@
     <script type="text/javascript">
     (function(d, m){
         var kommunicateSettings = 
-            {"appId":"32661a3ae2f76185944b5e634e1161f99","popupWidget":true,"automaticChatOpenOnNavigation":true};
+            {"appId":"32661a3ae2f76185944b5e634e1161f99","popupWidget":true,"automaticChatOpenOnNavigation":true, "onInit": function () {
+        var events = {
+            'onMessageReceived': function (resp) {
+            console.log(resp);
+            //called when a new message is received
+            },
+            'onMessageSent': function (resp) {
+            console.log(resp);
+                gtag('event', 'km_widget_message_sent', {
+        'app_name': 'myAppName',
+        'screen_name': 'Home'
+      });
+            //called when the message is sent
+            }
+            'onChatWidgetOpen': function (resp) {
+            console.log(resp);
+            //called when chat widget gets open
+            }
+        };
+        Kommunicate.subscribeToEvents(events);
+    },};
         var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
         s.src = "https://widget-test.kommunicate.io/v2/kommunicate.app";
         var h = document.getElementsByTagName("head")[0]; h.appendChild(s);

@@ -132,18 +132,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Page - Scraping Blocked</title>
-    <script>
-        // JavaScript to detect scraping attempts
-        document.addEventListener('DOMContentLoaded', function () {
-            if (document.referrer === '') {
-                // Block content if there is no referrer (indicating a bot)
-                document.body.innerHTML = '<h1>Access Denied</h1><p>Web scraping is not allowed.</p>';
-            }
-        });
-    </script>
+    <script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"32661a3ae2f76185944b5e634e1161f99","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget-test.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
 </head>
 <body>
     <h1>Welcome to Our Demo Page</h1>
-    <p>This content is protected against web scraping.</p>
+    <p>Testing Google Analytics</p>
 </body>
 </html>

@@ -1,180 +1,63 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunshine Bot</title>
-</head>
-<body style="display: flex; justify-content: center; align-items: center; height: 100vh;  background-color: rgb(252, 212, 212);">
-    <h1 style="text-align: center; color: rgb(0, 0, 0);">Testing Sunshine Integration</h1>
-
-    <script>
-
-        !(function (o, d, s, e, f) {
-            var i,
-                a,
-                p,
-                c = [],
-                h = [];
-            function t() {
-                var t = "5";
-                try {
-                    if (!f) throw new Error(t);
-                    var e,
-                        n = "https://cdn.smooch.io/",
-                        r = "smooch";
-                    e =
-                        "string" == typeof this.response
-                            ? JSON.parse(this.response)
-                            : this.response;
-                    var o = f.match(/([0-9]+)\.?([0-9]+)?\.?([0-9]+)?/),
-                        s = o && o[1],
-                        i = o && o[2],
-                        a = o && o[3],
-                        p = e["v" + s],
-                        c = e["v" + s + "." + i + ".patch"];
-                    if (e.url || p || c) {
-                        var h = d.getElementsByTagName("script")[0],
-                            u = d.createElement("script");
-                        if (((u.async = !0), a)) u.src = c || n + r + "." + f + ".min.js";
-                        else {
-                            if (!(5 <= s && p)) throw new Error(t);
-                            u.src = p;
-                        }
-                        h.parentNode.insertBefore(u, h);
-                    }
-                } catch (e) {
-                    e.message === t && console.error(e);
-                }
-            }
-            (o[s] = {
-                init: function () {
-                    i = arguments;
-                    var t = {
-                        then: function (e) {
-                            return h.push({ type: "t", next: e }), t;
-                        },
-                        catch: function (e) {
-                            return h.push({ type: "c", next: e }), t;
-                        },
-                    };
-                    return t;
-                },
-                on: function () {
-                    c.push(arguments);
-                },
-                render: function () {
-                    a = arguments;
-                },
-                destroy: function () {
-                    p = arguments;
-                },
-            }),
-                (o.__onWebMessengerHostReady__ = function (e) {
-                    if ((delete o.__onWebMessengerHostReady__, (o[s] = e), i))
-                        for (var t = e.init.apply(e, i), n = 0; n < h.length; n++) {
-                            var r = h[n];
-                            t = "t" === r.type ? t.then(r.next) : t.catch(r.next);
-                        }
-                    a && e.render.apply(e, a), p && e.destroy.apply(e, p);
-                    for (n = 0; n < c.length; n++) e.on.apply(e, c[n]);
-                });
-            var n = new XMLHttpRequest();
-            n.addEventListener("load", t),
-                n.open("GET", "https://" + e + ".webloader.smooch.io/", !0),
-                (n.responseType = "json"),
-                n.send();
-        })(window, document, "Smooch", "66ffe48db778de3ac56c788e", "5");
-    </script>
-    <script>
-        Smooch.init({
-            integrationId: "66ffe48db778de3ac56c788e", // Add the integration id here
-            canUserSeeConversationList: false,
-            businessName: 'Kommunicate',
-            businessIconUrl: 'https://static.zdassets.com/sunco-accounts/sunco-dashboard/v19/43f8f7a97a52a609c850cdbdfac3107a.svg',
-            prechatCapture: {
-                avatarUrl:
-                    "https://s3.amazonaws.com/kommunicate-prod.s3/profile_pic/17199458040551719945804085-image204.png",
-                enabled: true,
-                fields: [
-                    {
-                        type: "text",
-                        name: "name",
-                        label: "Nome",
-                        placeholder: "Enter your Name",
-                    },
-                    {
-                        type: "email",
-                        name: "email",
-                        label: "Email",
-                        placeholder: "Enter your email",
-                    },
-                ],
-            }
-        }).then(function (data) {
-            Smooch.createConversation({
-                metadata: {
-                    isFirstTimeCustomer: true,
-                },
-            }).then((conversation) => {
-                console.log("Hello Sunshine");
-            });
-        });
-    </script>
-</body>
-</html>
- -->
-
-
-
-
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo Page - Scraping Blocked</title>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PJMVVHCEF6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-PJMVVHCEF6');
-</script>
+    <!-- <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PJMVVHCEF6"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-PJMVVHCEF6");
+    </script> -->
     <script type="text/javascript">
-    (function(d, m){
-        var kommunicateSettings = 
-            {"appId":"32661a3ae2f76185944b5e634e1161f99","popupWidget":true,"automaticChatOpenOnNavigation":true, "onInit": function () {
-        var events = {
-            'onMessageReceived': function (resp) {
-            console.log(resp);
-            //called when a new message is received
-            },
-            'onMessageSent': function (resp) {
-            console.log(resp);
-        //         gtag('event', 'km_widget_message_sent', {
-        // 'app_name': 'myAppName',
-        // 'screen_name': 'Home'
-      });
-            //called when the message is sent
-            },
-            'onChatWidgetOpen': function (resp) {
-            console.log(resp);
-            //called when chat widget gets open
-            }
+      (function (d, m) {
+        var kommunicateSettings = {
+          appId: "32661a3ae2f76185944b5e634e1161f99",
+          popupWidget: true,
+          automaticChatOpenOnNavigation: true,
+          onInit: function () {
+            var events = {
+              onMessageReceived: function (resp) {
+                console.log(resp);
+                //called when a new message is received
+              },
+              onMessageSent: function (resp) {
+                console.log(resp);
+                // gtag("event", "km_widget_message_sent", {
+                //   app_name: "myAppName",
+                //   screen_name: "Home",
+                // });
+                //called when the message is sent
+              },
+              onChatWidgetOpen: function (resp) {
+                console.log(resp);
+                //called when chat widget gets open
+              },
+            };
+            Kommunicate.subscribeToEvents(events);
+          },
         };
-        Kommunicate.subscribeToEvents(events);
-    },};
-        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
         s.src = "https://widget-test.kommunicate.io/v2/kommunicate.app";
-        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
-        window.kommunicate = m; m._globals = kommunicateSettings;
-    })(document, window.kommunicate || {});
-/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
-</script>
-</head>
-<body>
+        var h = document.getElementsByTagName("head")[0];
+        h.appendChild(s);
+        window.kommunicate = m;
+        m._globals = kommunicateSettings;
+      })(document, window.kommunicate || {});
+      /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+    </script>
+  </head>
+  <body>
     <h1>Welcome to Our Demo Page</h1>
     <p>Testing Google Analytics</p>
-</body>
+  </body>
 </html>
